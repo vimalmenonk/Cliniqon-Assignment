@@ -1,0 +1,47 @@
+﻿@page
+@model SearchFriendModel
+@{
+    ViewData["Title"] = "Search Friend";
+}
+
+<h2>Search Friend</h2>
+
+<input type="text" id="searchInput" placeholder="Search by name..." />
+<button id="searchButton">Search</button>
+
+<div id="results">
+    <!-- Results will be displayed here dynamically -->
+</div>
+
+<script>
+    document.getElementById("searchButton").onclick = function () {
+        var input = document.getElementById("searchInput").value;
+
+        if (input.length > 0) {
+            // Perform AJAX call to search friends
+            fetch(`/SearchFriend?handler=Search&name=${input}`)
+                .then(response => response.json())
+                .then(data => {
+                    var resultsDiv = document.getElementById("results");
+                    resultsDiv.innerHTML = ''; // Clear previous results
+
+                    if (data.length > 0) {
+                        data.forEach(friend => {
+                            var friendDiv = document.createElement("div");
+                            friendDiv.classList.add("friend");
+                            friendDiv.innerHTML = `
+                                    <h3>${friend.name}</h3>
+                                    <img src="${friend.profilePicture}" alt="${friend.name}" style="width: 50px; height: 50px;"/>
+                                `;
+                            resultsDiv.appendChild(friendDiv);
+                        });
+                    } else {
+                        resultsDiv.innerHTML = '<p>No friends found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during search:', error);
+                });
+        }
+    };
+</script>

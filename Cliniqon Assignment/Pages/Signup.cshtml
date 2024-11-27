@@ -1,0 +1,104 @@
+﻿@page
+@model SignupModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<!-- Main Content Section -->
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    @* Success message - Displayed only when the form is successfully submitted *@
+    @if (ModelState.IsValid && Request.Method == "POST")
+    {
+            <div class="alert alert-success">
+                Account created successfully!
+            </div>
+    }
+    <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
+
+        <!-- Name Input -->
+        <div>
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" asp-for="Name" class="form-control" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+
+        <!-- Email Input -->
+        <div>
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" asp-for="Email" class="form-control" />
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+
+        <!-- Password Input -->
+        <div>
+            <label for="Password">Password:</label>
+            <input type="password" id="Password" asp-for="Password" class="form-control" />
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+
+        <!-- Date of Birth Input -->
+        <div>
+            <label for="DOB">DOB:</label>
+            <input type="date" id="DOB" asp-for="DOB" class="form-control" />
+            <span class="text-danger" asp-validation-for="DOB"></span>
+        </div>
+
+        <!-- Designation Input -->
+        <div>
+            <label for="Designation">Designation:</label>
+            <input type="text" id="Designation" asp-for="Designation" class="form-control" />
+            <span class="text-danger" asp-validation-for="Designation"></span>
+        </div>
+
+        <!-- Gender Input -->
+        <div>
+            <label for="Gender">Gender:</label>
+            <select asp-for="Gender" class="form-control">
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <span class="text-danger" asp-validation-for="Gender"></span>
+        </div>
+
+        <!-- Profile Picture URL Input -->
+        <div>
+            <label for="ProfilePicture">Profile Picture URL:</label>
+            <input type="text" id="ProfilePicture" asp-for="ProfilePicture" class="form-control" />
+        </div>
+
+        <!-- Country Input -->
+        <div>
+            <label for="Country">Country:</label>
+            <input type="text" id="Country" asp-for="Country" class="form-control" />
+            <span class="text-danger" asp-validation-for="Country"></span>
+        </div>
+
+        <!-- Favorite Color Input -->
+        <div>
+            <label for="FavoriteColor">Favorite Color:</label>
+            <input type="text" id="FavoriteColor" asp-for="FavoriteColor" class="form-control" />
+            <span class="text-danger" asp-validation-for="FavoriteColor"></span>
+        </div>
+
+        <!-- Favorite Actor Input -->
+        <div>
+            <label for="FavoriteActor">Favorite Actor:</label>
+            <input type="text" id="FavoriteActor" asp-for="FavoriteActor" class="form-control" />
+            <span class="text-danger" asp-validation-for="FavoriteActor"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="text-align: center;">
+            <button type="submit" class="btn">Sign Up</button>
+        </div>
+    </form>
+</div>
+
+@{
+    Layout = "_Layout";
+}
+
+

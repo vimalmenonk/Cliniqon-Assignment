@@ -1,0 +1,44 @@
+﻿@page "{id:int}"
+@model UserProfileModel
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<h2>User Profile</h2>
+
+<div class="user-profile">
+    <img src="@Model.User.ProfilePicture" alt="@Model.User.Name's Profile" class="profile-pic" />
+    <div class="user-details">
+        <h3>@Model.User.Name</h3>
+        <p><strong>Designation:</strong> @Model.User.Designation</p>
+        <p><strong>Email:</strong> @Model.User.Email</p>
+        <p><strong>Bio:</strong> @Model.User.Bio</p>
+    </div>
+</div>
+
+<style>
+    .user-profile {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .user-details {
+        display: inline-block;
+    }
+
+        .user-details h3 {
+            margin: 0;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+        }
+</style>

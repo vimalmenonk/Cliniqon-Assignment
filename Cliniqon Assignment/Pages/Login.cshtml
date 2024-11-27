@@ -1,0 +1,33 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<h2>Sign In</h2>
+
+<!-- Display error message if login failed -->
+@if (Model.LoginFailed)
+{
+    <div class="alert alert-danger">
+        Invalid email or password. Please try again.
+    </div>
+}
+
+<form method="post">
+    <div>
+        <label for="Email">Email:</label>
+        <input type="email" name="Email" asp-for="Email" required />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label for="Password">Password:</label>
+        <input type="password" name="Password" asp-for="Password" required />
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+    <button type="submit">Sign In</button>
+</form>
+
+@{
+    Layout = "_Layout";
+}

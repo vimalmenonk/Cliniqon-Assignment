@@ -1,0 +1,48 @@
+﻿@page
+@model HomeModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Home</h2>
+
+<div id="userProfiles">
+    @foreach (var user in Model.Users)
+    {
+        <div class="user-profile" onclick="window.location.href='@Url.Page("/UserProfile", new { id = user.Id })'">
+            <img src="@user.ProfilePicture" alt="@user.Name's Profile" class="profile-pic" />
+            <div class="user-details">
+                <h3>@user.Name</h3>
+                <p>@user.Designation</p>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .user-profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .user-details {
+        display: inline-block;
+    }
+
+    .user-details h3 {
+        margin: 0;
+    }
+
+    .user-details p {
+        margin: 5px 0 0;
+    }
+</style>

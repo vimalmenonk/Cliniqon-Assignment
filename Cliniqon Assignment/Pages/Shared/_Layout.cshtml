@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/styles.css"> <!-- Link to your custom styles if any -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header style="background-color: #3498db; color: white; padding: 10px 0; text-align: center;">
+        <div style="font-size: 24px; font-weight: bold;">Cliniqon_Assignment</div>
+        <div>
+            <a href="/" style="color: white; margin: 0 10px; text-decoration: none;">Home</a> |
+            <a href="/Privacy" style="color: white; margin: 0 10px; text-decoration: none;">Privacy</a>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        @RenderBody() 
+        <!-- This will render the content of the current page -->
+    </main>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #2c3e50; color: white; text-align: center; padding: 10px 0;">
+        <div>
+            © 2024 - Cliniqon_Assignment -
+            <a href="/Privacy" class="footer-link" style="color: white; text-decoration: none;">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>

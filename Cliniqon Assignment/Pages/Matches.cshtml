@@ -1,0 +1,65 @@
+﻿@page
+@model MatchesModel
+@{
+    ViewData["Title"] = "Matches";
+}
+
+<h2>Potential Matches</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
+<div id="matchesList" class="match-list">
+    @if (Model.Matches.Count == 0)
+    {
+        <p>No matches found.</p>
+    }
+    else
+    {
+        @foreach (var match in Model.Matches)
+        {
+            <div class="match-item">
+                <h3>@match.Name</h3>
+                <p><strong>Age:</strong> @match.Age</p>
+                <p><strong>Gender:</strong> @match.Gender</p>
+                <p><strong>Country:</strong> @match.Country</p>
+                <p><strong>Match Percentage:</strong> @match.MatchPercentage%</p>
+            </div>
+        }
+    }
+</div>
+
+<style>
+    .match-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .match-item {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        width: calc(33.33% - 20px);
+        box-sizing: border-box;
+    }
+
+    .match-item h3 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .alert-danger {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f8d7da;
+        color: #721c24;
+        border-radius: 4px;
+    }
+</style>
